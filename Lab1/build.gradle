@@ -1,0 +1,44 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // JUnit for testing
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.10.3'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.10.3'
+
+    // Optional: If you need Hamcrest for matchers (often used with JUnit)
+    testImplementation 'org.hamcrest:hamcrest:2.2'
+}
+
+application {
+    // Specify the name of your main class to be runnable
+    mainClass = 'org.example.AuthorApp'
+}
+
+// This section is for a simple Java project
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src/main/java']
+        }
+    }
+    test {
+        java {
+            srcDirs = ['src/test/java']  // Ensure test sources are recognized
+        }
+    }
+}
+
+// Optional: Configure test task to use JUnit 5
+test {
+    useJUnitPlatform()
+}
